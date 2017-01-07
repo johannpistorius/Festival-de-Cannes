@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/johann/Documents/school/university/prog_IHM/Festival%20de%20Cannes/src/festival/de/cannes/Personne.java</file>
-            <file>file:/C:/Users/johann/Documents/school/university/prog_IHM/Festival%20de%20Cannes/src/festival/de/cannes/FestivalDeCannes.java</file>
-            <file>file:/C:/Users/johann/Documents/school/university/prog_IHM/Festival%20de%20Cannes/src/festival/de/cannes/Film.java</file>
-            <file>file:/C:/Users/johann/Documents/school/university/prog_IHM/Festival%20de%20Cannes/src/festival/de/cannes/VIP.java</file>
+            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes/Partie%20Développement/Festival%20de%20Cannes/src/festival/de/cannes/ConfigureConnection.java</file>
+            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes/Partie%20Développement/Festival%20de%20Cannes/src/festival/de/cannes/ConnectionManager.java</file>
+            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes/Partie%20Développement/Festival%20de%20Cannes/src/festival/de/cannes/PagePlanning.java</file>
+            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes/Partie%20Développement/Festival%20de%20Cannes/src/festival/de/cannes/FestivalDeCannes.java</file>
+            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes/Partie%20Développement/Festival%20de%20Cannes/src/festival/de/cannes/connection.properties</file>
         </group>
     </open-files>
 </project-private>

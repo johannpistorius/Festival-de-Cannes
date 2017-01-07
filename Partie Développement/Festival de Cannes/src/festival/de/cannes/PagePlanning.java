@@ -13,7 +13,12 @@ import javax.swing.*;
  * @author johann
  */
 public class PagePlanning extends JFrame{
-    JPanel panel=new JPanel();
+    JFrame frame;
+    JPanel panel;
+    JTable table;
+    JScrollPane tableContainer;
+    String[] columnNames;
+    Object[][] data;
     /**
      * Constructeur
      */
@@ -22,11 +27,17 @@ public class PagePlanning extends JFrame{
         init();
     }
     public final void init(){
-        setSize(1000, 700);
-        setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        panel.setLayout(null);
-        setContentPane(panel);
-        setVisible(true);
+        this.columnNames = new String[]{"Jour", "Heure", "Titre", "Type", "Realisateur"};
+        this.data= new Object[][]{{"hello","hello","hello","hello","hello"}};
+        panel=new JPanel();
+        frame=new JFrame("Planning Projection");
+        table=new JTable(data,columnNames);
+        tableContainer=new JScrollPane(table);
+        panel.setLayout(new BorderLayout());
+        panel.add(tableContainer,BorderLayout.CENTER);
+        frame.getContentPane().add(panel);
+        frame.pack();
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }

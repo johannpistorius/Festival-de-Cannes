@@ -24,7 +24,7 @@ public class OracleClasseMetierDAO /*implements IClasseMetierDAO*/{
     
     
     public OracleClasseMetierDAO(){
-        System.out.println("bite");
+        System.out.println("test");
     }
     
     
@@ -68,7 +68,7 @@ public class OracleClasseMetierDAO /*implements IClasseMetierDAO*/{
         int nbPersonne=0;
         String str;
         try{
-            setConnection(connexionBD);
+            this.setConnection(connexionBD);
             stmt=connexionBD.createStatement();
             rset=stmt.executeQuery("SELECT count(*) from CPOA_Personne");
             str = rset.getString("count(*)");

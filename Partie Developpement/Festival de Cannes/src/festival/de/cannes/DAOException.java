@@ -7,19 +7,13 @@ package festival.de.cannes;
 
 /**
  *
- * @author johann
+ * @author p1511158
  */
-public class VIP extends Personne{
-    private String nationalite;
-    private String metier;
-    private String dateNaissance;
-    
-    /**
-     *
-     */
-    @Override
-    public void getPersonne(){
-        
+public class DAOException extends Exception{
+    public DAOException(String message, Throwable cause){
+        super(message, cause);
     }
-    
+    public DAOException(Throwable cause){
+        super(cause);
+    }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package festival.de.cannes;
+package festival_de_cannes;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -35,7 +35,7 @@ public class OracleClasseMetierDAO /*implements IClasseMetierDAO*/{
     }
     //@Override
     public void setConnection(Connection c){
-        this.connexionBD=c;
+        OracleClasseMetierDAO.connexionBD=c;
     }
     /*//@Override
     public List<ClasseMetier> getLesObjetsClasseMetier(){

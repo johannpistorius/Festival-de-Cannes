@@ -5,6 +5,7 @@
  */
 package festival_de_cannes;
 
+import org.mariadb.jdbc.MariaDbDataSource;
 import java.io.FileInputStream;
 import java.io.IOException; 
 import java.sql.*; 
@@ -17,9 +18,9 @@ import oracle.jdbc.pool.OracleDataSource;
  *
  * @author p1511158
  */
-public class OracleDataSourceDAO {
-    private static OracleDataSource ods;
-    private OracleDataSourceDAO() throws SQLException{
+public class MariaDbDataSourceDAO {
+    private static MariaDbDataSource mds;
+    private MariaDbDataSourceDAO() throws SQLException{
         
     }
     public static DataSource getOracleDataSourceDAO(){
@@ -31,21 +32,26 @@ public class OracleDataSourceDAO {
             
             // indice sur l'arborescence :   fichier=new FileInputStream(".\\src\\nompackage\\dao\\oracle\\connexion.properties");
             
-            
-            
-            System.out.println("wow");
+
             fichier=new FileInputStream(".\\src\\festival_de_cannes\\connection.properties");
             props.load(fichier);
-            ods = new OracleDataSource(); 
+            mds = new MariaDbDataSource(); 
+            mds.setDatabaseName(props.getProperty("DbName"));
+            mds.setPortNumber(Integer.parseInt(props.getProperty("portNumber")));
+            mds.setServerName(props.getProperty("server"));
+            mds.setUserName(props.getProperty("user"));
+            mds.setPassword(props.getProperty("pwd"));
+            
+            
+            /*
             ods.setDriverType(props.getProperty("driver")); 
-            //ods.setPortNumber(new Integer(props.getProperty("port")).intValue()); 
-            //ods.setServiceName(props.getProperty("service")); 
+            ods.setPortNumber(new Integer(props.getProperty("port")).intValue()); 
+            ods.setServiceName(props.getProperty("service")); 
             ods.setUser(props.getProperty("user")); 
             ods.setPassword(props.getProperty("pwd")); 
-            //ods.setServerName(props.getProperty("serveur"));
+            ods.setServerName(props.getProperty("serveur"));
             ods.setURL(props.getProperty("url"));
-        }catch(SQLException e){
-            System.out.println("Erreur SQL");
+            */
         }catch(IOException e){
             System.out.println("Erreur lors de l'ouverture du fichier");
         }
@@ -56,6 +62,6 @@ public class OracleDataSourceDAO {
                 System.out.println("Erreur dans la fermeture du fichier");
             }
         }
-        return ods;
+        return mds;
     }
 }

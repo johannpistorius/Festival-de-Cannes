@@ -17,13 +17,13 @@ import javax.sql.DataSource;
  *
  * @author p1511158
  */
-public class OracleClasseMetierDAO /*implements IClasseMetierDAO*/{
+public class MariaDbClasseMetierDAO /*implements IClasseMetierDAO*/{
     private static DataSource ds;
     private static Connection connexionBD;
     
     
     
-    public OracleClasseMetierDAO(){
+    public MariaDbClasseMetierDAO(){
         System.out.println("test");
     }
     
@@ -31,11 +31,11 @@ public class OracleClasseMetierDAO /*implements IClasseMetierDAO*/{
     
     //@Override
     public void setDataSource(DataSource ds){
-        OracleClasseMetierDAO.ds=ds;
+        MariaDbClasseMetierDAO.ds=ds;
     }
     //@Override
     public void setConnection(Connection c){
-        OracleClasseMetierDAO.connexionBD=c;
+        MariaDbClasseMetierDAO.connexionBD=c;
     }
     /*//@Override
     public List<ClasseMetier> getLesObjetsClasseMetier(){

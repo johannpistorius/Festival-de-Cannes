@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes-master/Partie%20Developpement/Festival%20de%20Cannes/src/festival/de/cannes/connection.properties</file>
-            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes-master/Partie%20Developpement/Festival%20de%20Cannes/src/festival/de/cannes/OracleDataSourceDAO.java</file>
-            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes-master/Partie%20Developpement/Festival%20de%20Cannes/src/festival/de/cannes/FestivalDeCannes.java</file>
-            <file>file:/D:/school/IUT/S3/CPOA/Festival-de-Cannes-master/Partie%20Developpement/Festival%20de%20Cannes/src/festival/de/cannes/OracleClasseMetierDAO.java</file>
+            <file>file:/C:/Users/Alexis/Documents/IUT_Info/S3/CPOA/Festival-de-Cannes/Partie%20Developpement/Festival%20de%20Cannes/src/festival_de_cannes/FestivalDeCannes.java</file>
+            <file>file:/C:/Users/Alexis/Documents/IUT_Info/S3/CPOA/Festival-de-Cannes/Partie%20Developpement/Festival%20de%20Cannes/src/festival_de_cannes/PagePlanning.java</file>
+            <file>file:/C:/Users/Alexis/Documents/IUT_Info/S3/CPOA/Festival-de-Cannes/Partie%20Developpement/Festival%20de%20Cannes/src/festival_de_cannes/MariaDbClasseMetierDAO.java</file>
+            <file>file:/C:/Users/Alexis/Documents/IUT_Info/S3/CPOA/Festival-de-Cannes/Partie%20Developpement/Festival%20de%20Cannes/src/festival_de_cannes/MariaDbDataSourceDAO.java</file>
+            <file>file:/C:/Users/Alexis/Documents/IUT_Info/S3/CPOA/Festival-de-Cannes/Partie%20Developpement/Festival%20de%20Cannes/src/festival_de_cannes/connection.properties</file>
         </group>
     </open-files>
 </project-private>

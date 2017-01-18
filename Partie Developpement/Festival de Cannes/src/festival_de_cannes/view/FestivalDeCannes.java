@@ -1,6 +1,7 @@
 
-package festival_de_cannes;
+package festival_de_cannes.view;
 
+import festival_de_cannes.model.MariaDbDataSourceDAO;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ import org.mariadb.jdbc.MariaDbDataSource;
 public class FestivalDeCannes {
     
     
-    static PagePlanning p;
+    static Page_Principale p;
     private static DataSource dataSourceDAO=null;
     private static Connection connexionBD=null;
     
@@ -60,7 +61,7 @@ public class FestivalDeCannes {
             System.out.println("Erreur SQL");
         }
 
-        p=new PagePlanning();
+        p=new Page_Principale();
             
             
     }

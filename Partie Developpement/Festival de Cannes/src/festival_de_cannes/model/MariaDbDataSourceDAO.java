@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package festival_de_cannes;
+package festival_de_cannes.model;
 
 import org.mariadb.jdbc.MariaDbDataSource;
 import java.io.FileInputStream;
@@ -28,7 +28,7 @@ public class MariaDbDataSourceDAO {
         Properties props=new Properties();
         try{
             // indice sur l'arborescence :   fichier=new FileInputStream(".\\src\\nompackage\\dao\\oracle\\connexion.properties");            
-            fichier=new FileInputStream(".\\src\\festival_de_cannes\\connection.properties");
+            fichier=new FileInputStream(".\\src\\festival_de_cannes\\controller\\connection.properties");
             props.load(fichier);
             mds = new MariaDbDataSource(); 
             mds.setDatabaseName(props.getProperty("DbName"));

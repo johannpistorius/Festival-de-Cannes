@@ -23,16 +23,11 @@ public class MariaDbDataSourceDAO {
     private MariaDbDataSourceDAO() throws SQLException{
         
     }
-    public static DataSource getOracleDataSourceDAO(){
+    public static DataSource getDataSource(){
         FileInputStream fichier=null;
+        Properties props=new Properties();
         try{
-            Properties props=new Properties();
-            
-            
-            
-            // indice sur l'arborescence :   fichier=new FileInputStream(".\\src\\nompackage\\dao\\oracle\\connexion.properties");
-            
-
+            // indice sur l'arborescence :   fichier=new FileInputStream(".\\src\\nompackage\\dao\\oracle\\connexion.properties");            
             fichier=new FileInputStream(".\\src\\festival_de_cannes\\connection.properties");
             props.load(fichier);
             mds = new MariaDbDataSource(); 
@@ -42,16 +37,7 @@ public class MariaDbDataSourceDAO {
             mds.setUserName(props.getProperty("user"));
             mds.setPassword(props.getProperty("pwd"));
             
-            
-            /*
-            ods.setDriverType(props.getProperty("driver")); 
-            ods.setPortNumber(new Integer(props.getProperty("port")).intValue()); 
-            ods.setServiceName(props.getProperty("service")); 
-            ods.setUser(props.getProperty("user")); 
-            ods.setPassword(props.getProperty("pwd")); 
-            ods.setServerName(props.getProperty("serveur"));
-            ods.setURL(props.getProperty("url"));
-            */
+            return mds;
         }catch(IOException e){
             System.out.println("Erreur lors de l'ouverture du fichier");
         }

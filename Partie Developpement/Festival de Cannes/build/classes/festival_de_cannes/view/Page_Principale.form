@@ -18,6 +18,9 @@
                 <Property name="text" type="java.lang.String" value="Sauvegarder"/>
                 <Property name="toolTipText" type="java.lang.String" value="Ecrase l&apos;ancien planning sur la base de donn&#xe9;es avec le planning actuel"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem_SauvegarderActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -26,6 +29,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Festival De Cannes"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar_header"/>

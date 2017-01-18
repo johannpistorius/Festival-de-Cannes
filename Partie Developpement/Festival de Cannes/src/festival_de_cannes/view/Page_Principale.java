@@ -60,6 +60,7 @@ public class Page_Principale extends javax.swing.JFrame {
         menuItem_Sauvegarder = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Festival De Cannes");
 
         panel_planning.setBorder(javax.swing.BorderFactory.createTitledBorder("Planning Actuel"));
 
@@ -139,6 +140,11 @@ public class Page_Principale extends javax.swing.JFrame {
         menuItem_Sauvegarder.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         menuItem_Sauvegarder.setText("Sauvegarder");
         menuItem_Sauvegarder.setToolTipText("Ecrase l'ancien planning sur la base de données avec le planning actuel");
+        menuItem_Sauvegarder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_SauvegarderActionPerformed(evt);
+            }
+        });
         menu_fichier.add(menuItem_Sauvegarder);
 
         menuBar_header.add(menu_fichier);
@@ -187,7 +193,7 @@ public class Page_Principale extends javax.swing.JFrame {
     }//GEN-LAST:event_b_supprimerActionPerformed
 
     private void b_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ajouterActionPerformed
-        Page_Ajouter page = new Page_Ajouter();
+        Page_Ajouter page = new Page_Ajouter(this);
         page.setVisible(true);
     }//GEN-LAST:event_b_ajouterActionPerformed
 
@@ -195,6 +201,27 @@ public class Page_Principale extends javax.swing.JFrame {
         Page_Generer page = new Page_Generer();
         page.setVisible(true);
     }//GEN-LAST:event_b_genererActionPerformed
+
+    private void menuItem_SauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_SauvegarderActionPerformed
+        Statement stmt=null;
+        ResultSet rset=null;
+        try {
+            stmt=connexionBD.createStatement();
+            stmt.executeQuery("DELETE * FROM cpoa_projection;");
+            int nbProjections = modele.getRowCount();
+            for(int i=0;i<nbProjections;i++){
+                int numProjection=i;
+                rset=stmt.executeQuery("SELECT numFilm FROM cpoa_film WHERE cpoa_film.titre ='"+modele.getValueAt(i,0)+"';");
+                rset.next();
+                int numFilm=rset.getInt("numFilm");
+                String dateDebut=;
+                int numSalle=;
+                stmt.executeQuery("INSERT INTO cpoa_projection VALUES('"+numProjection+"','"+numFilm+"','"+dateDebut+"','"+numSalle+")");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Page_Principale.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItem_SauvegarderActionPerformed
 
     public void remplirProjections(){
         ResultSet rset=null;
@@ -228,7 +255,10 @@ public class Page_Principale extends javax.swing.JFrame {
     public void supprimerProjection(){
         modele.removeRow(t_planning.getSelectedRow());  ;
     }
-
+    
+    public void ajouterProjection(String titre,String salle,String date,String heure,int duree){
+        modele.addRow(new Object[]{titre, salle, date, heure, duree});
+    }
     
     /**
      * @param args the command line arguments

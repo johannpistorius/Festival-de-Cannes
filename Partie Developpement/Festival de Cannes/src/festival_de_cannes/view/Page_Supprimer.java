@@ -8,6 +8,7 @@ package festival_de_cannes.view;
 /**
  *
  * @author Alexis
+ * @author Johann
  */
 public class Page_Supprimer extends javax.swing.JFrame {
 
@@ -94,7 +95,9 @@ public class Page_Supprimer extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_b_annulerActionPerformed
 
-
+    /**
+     * @param args the command line arguments
+     */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

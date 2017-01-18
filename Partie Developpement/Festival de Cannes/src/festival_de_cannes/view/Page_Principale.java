@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package festival_de_cannes.view;
 
 import festival_de_cannes.model.MariaDbDataSourceDAO;
@@ -10,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import static java.time.LocalDateTime.now;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
@@ -18,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Alexis
+ * @author Johann
  */
 public class Page_Principale extends javax.swing.JFrame {
     
@@ -55,6 +52,7 @@ public class Page_Principale extends javax.swing.JFrame {
         b_ajouter = new javax.swing.JButton();
         b_generer = new javax.swing.JButton();
         b_supprimer = new javax.swing.JButton();
+        l_retour = new javax.swing.JLabel();
         menuBar_header = new javax.swing.JMenuBar();
         menu_fichier = new javax.swing.JMenu();
         menuItem_Sauvegarder = new javax.swing.JMenuItem();
@@ -157,13 +155,19 @@ public class Page_Principale extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(panel_planning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(b_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b_generer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
+                        .addComponent(l_retour)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panel_planning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(b_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(b_generer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(b_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(58, 58, 58))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +183,9 @@ public class Page_Principale extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(panel_planning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(l_retour)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,16 +213,21 @@ public class Page_Principale extends javax.swing.JFrame {
         ResultSet rset=null;
         try {
             stmt=connexionBD.createStatement();
-            stmt.executeQuery("DELETE * FROM cpoa_projection;");
+            stmt.executeQuery("DELETE FROM cpoa_projection;");
             int nbProjections = modele.getRowCount();
             for(int i=0;i<nbProjections;i++){
                 int numProjection=i;
                 rset=stmt.executeQuery("SELECT numFilm FROM cpoa_film WHERE cpoa_film.titre ='"+modele.getValueAt(i,0)+"';");
                 rset.next();
                 int numFilm=rset.getInt("numFilm");
-                String dateDebut=;
-                int numSalle=;
-                stmt.executeQuery("INSERT INTO cpoa_projection VALUES('"+numProjection+"','"+numFilm+"','"+dateDebut+"','"+numSalle+")");
+                String jour=modele.getValueAt(i,2).toString();
+                String heure=modele.getValueAt(i,3).toString();
+                String dateDebut=jour.substring(6,10)+'-'+jour.substring(3,5)+'-'+jour.substring(0,2)+' '+heure+":00";
+                rset=stmt.executeQuery("SELECT numSalle FROM cpoa_salle WHERE cpoa_salle.nom ='"+modele.getValueAt(i,1)+"';");
+                rset.next();
+                int numSalle=rset.getInt("numSalle");
+                stmt.executeQuery("INSERT INTO cpoa_projection VALUES("+numProjection+","+numFilm+",'"+dateDebut+"',"+numSalle+")");
+                l_retour.setText("Sauvegarde effectuée ("+now().toString().substring(0,10)+' '+now().toString().substring(11,19)+")");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Page_Principale.class.getName()).log(Level.SEVERE, null, ex);
@@ -233,7 +244,6 @@ public class Page_Principale extends javax.swing.JFrame {
         String dateTemp="";
         int duree=0;
             
-            System.out.println("Connexion établie !!!");
         try {
             stmt=connexionBD.createStatement();
             rset=stmt.executeQuery("SELECT titre,nom,dateDebut,duree FROM cpoa_projection, cpoa_film, cpoa_salle WHERE cpoa_projection.numfilm=cpoa_film.numfilm AND cpoa_projection.numsalle=cpoa_salle.numsalle;");
@@ -253,47 +263,11 @@ public class Page_Principale extends javax.swing.JFrame {
     }
     
     public void supprimerProjection(){
-        modele.removeRow(t_planning.getSelectedRow());  ;
+        modele.removeRow(t_planning.getSelectedRow());
     }
     
     public void ajouterProjection(String titre,String salle,String date,String heure,int duree){
         modele.addRow(new Object[]{titre, salle, date, heure, duree});
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Page_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Page_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Page_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Page_Principale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Page_Principale().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -301,6 +275,7 @@ public class Page_Principale extends javax.swing.JFrame {
     private javax.swing.JButton b_generer;
     private javax.swing.JButton b_supprimer;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel l_retour;
     private javax.swing.JMenuBar menuBar_header;
     private javax.swing.JMenuItem menuItem_Sauvegarder;
     private javax.swing.JMenu menu_fichier;

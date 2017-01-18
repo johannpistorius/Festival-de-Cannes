@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package festival_de_cannes.model;
 
 import org.mariadb.jdbc.MariaDbDataSource;
@@ -11,12 +6,12 @@ import java.io.IOException;
 import java.sql.*; 
 import java.util.*;
 import javax.sql.DataSource;
-import oracle.jdbc.pool.OracleDataSource;
 
 
 /**
  *
- * @author p1511158
+ * @author Alexis
+ * @author Johann
  */
 public class MariaDbDataSourceDAO {
     private static MariaDbDataSource mds;
@@ -26,8 +21,7 @@ public class MariaDbDataSourceDAO {
     public static DataSource getDataSource(){
         FileInputStream fichier=null;
         Properties props=new Properties();
-        try{
-            // indice sur l'arborescence :   fichier=new FileInputStream(".\\src\\nompackage\\dao\\oracle\\connexion.properties");            
+        try{         
             fichier=new FileInputStream(".\\src\\festival_de_cannes\\controller\\connection.properties");
             props.load(fichier);
             mds = new MariaDbDataSource(); 

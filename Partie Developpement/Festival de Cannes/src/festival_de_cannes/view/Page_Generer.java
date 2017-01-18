@@ -8,6 +8,7 @@ package festival_de_cannes.view;
 /**
  *
  * @author Alexis
+ * @author Johann
  */
 public class Page_Generer extends javax.swing.JFrame {
 

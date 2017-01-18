@@ -29,7 +29,7 @@ public class Page_Principale extends javax.swing.JFrame {
         initComponents();
         
         
-        modele = (DefaultTableModel) jTable1.getModel();
+        modele = (DefaultTableModel) t_planning.getModel();
         
         dataSourceDAO = MariaDbDataSourceDAO.getDataSource();
         try {
@@ -49,18 +49,21 @@ public class Page_Principale extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panel_planning = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        t_planning = new javax.swing.JTable();
+        b_ajouter = new javax.swing.JButton();
+        b_generer = new javax.swing.JButton();
+        b_supprimer = new javax.swing.JButton();
+        menuBar_header = new javax.swing.JMenuBar();
+        menu_fichier = new javax.swing.JMenu();
+        menuItem_Sauvegarder = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Planning Actuel"));
+        panel_planning.setBorder(javax.swing.BorderFactory.createTitledBorder("Planning Actuel"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        t_planning.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -83,67 +86,64 @@ public class Page_Principale extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setEditingColumn(1);
-        jScrollPane1.setViewportView(jTable1);
+        t_planning.setEditingColumn(1);
+        jScrollPane1.setViewportView(t_planning);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel_planningLayout = new javax.swing.GroupLayout(panel_planning);
+        panel_planning.setLayout(panel_planningLayout);
+        panel_planningLayout.setHorizontalGroup(
+            panel_planningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_planningLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panel_planningLayout.setVerticalGroup(
+            panel_planningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_planningLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jButton2.setText("Ajouter une projection");
-        jButton2.setToolTipText("Ajoute une projection pour un film et un horaire choisis");
-        jButton2.setPreferredSize(new java.awt.Dimension(200, 60));
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        b_ajouter.setText("Ajouter une projection");
+        b_ajouter.setToolTipText("Ajoute une projection pour un film et un horaire choisis");
+        b_ajouter.setPreferredSize(new java.awt.Dimension(200, 60));
+        b_ajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                b_ajouterActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Générer un planning");
-        jButton1.setToolTipText("Génère automatiquement le planning à partir des films enregistrés sur une plage horaire choisie");
-        jButton1.setPreferredSize(new java.awt.Dimension(200, 60));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        b_generer.setText("Générer un planning");
+        b_generer.setToolTipText("Génère automatiquement le planning à partir des films enregistrés sur une plage horaire choisie");
+        b_generer.setPreferredSize(new java.awt.Dimension(200, 60));
+        b_generer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                b_genererActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Supprimer Projection");
-        jButton3.setToolTipText("Supprime la projection sélectionnée");
-        jButton3.setPreferredSize(new java.awt.Dimension(200, 60));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        b_supprimer.setText("Supprimer Projection");
+        b_supprimer.setToolTipText("Supprime la projection sélectionnée");
+        b_supprimer.setPreferredSize(new java.awt.Dimension(200, 60));
+        b_supprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                b_supprimerActionPerformed(evt);
             }
         });
+
+        menu_fichier.setText("Fichier");
+        menu_fichier.setToolTipText("");
+
+        menuItem_Sauvegarder.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        menuItem_Sauvegarder.setText("Sauvegarder");
+        menuItem_Sauvegarder.setToolTipText("Ecrase l'ancien planning sur la base de données avec le planning actuel");
+        menu_fichier.add(menuItem_Sauvegarder);
+
+        menuBar_header.add(menu_fichier);
+
+        setJMenuBar(menuBar_header);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,12 +151,12 @@ public class Page_Principale extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel_planning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(b_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_generer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
@@ -165,43 +165,36 @@ public class Page_Principale extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(b_generer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(b_ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(b_supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panel_planning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void b_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_supprimerActionPerformed
+        if(t_planning.getSelectedRowCount()>0){
+            Page_Supprimer page = new Page_Supprimer(this);
+            page.setVisible(true);
+        }
+    }//GEN-LAST:event_b_supprimerActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void b_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ajouterActionPerformed
+        Page_Ajouter page = new Page_Ajouter();
+        page.setVisible(true);
+    }//GEN-LAST:event_b_ajouterActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3MouseClicked
+    private void b_genererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_genererActionPerformed
+        Page_Generer page = new Page_Generer();
+        page.setVisible(true);
+    }//GEN-LAST:event_b_genererActionPerformed
 
     public void remplirProjections(){
         ResultSet rset=null;
@@ -212,7 +205,6 @@ public class Page_Principale extends javax.swing.JFrame {
         String heureDebut ="";
         String dateTemp="";
         int duree=0;
-        
             
             System.out.println("Connexion établie !!!");
         try {
@@ -231,6 +223,10 @@ public class Page_Principale extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Page_Principale.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void supprimerProjection(){
+        modele.removeRow(t_planning.getSelectedRow());  ;
     }
 
     
@@ -271,11 +267,14 @@ public class Page_Principale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton b_ajouter;
+    private javax.swing.JButton b_generer;
+    private javax.swing.JButton b_supprimer;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JMenuBar menuBar_header;
+    private javax.swing.JMenuItem menuItem_Sauvegarder;
+    private javax.swing.JMenu menu_fichier;
+    private javax.swing.JPanel panel_planning;
+    private javax.swing.JTable t_planning;
     // End of variables declaration//GEN-END:variables
 }

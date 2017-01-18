@@ -6,12 +6,10 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
-import javax.swing.text.DateFormatter;
-import javax.swing.text.DefaultFormatterFactory;
+
 
 /**
  *
@@ -54,6 +52,7 @@ public class Page_Ajouter extends javax.swing.JFrame {
         b_annuler = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ajouter une projection");
 
         l_titre.setText("Titre :");
 
